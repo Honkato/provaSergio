@@ -7,32 +7,27 @@ public class Storage {
 
     FuncoesUsuais f = new FuncoesUsuais();
     void setArmazem(float result){
-        boolean s = f.simNao("Deseja armazenar o valor?");
-        if (s){
+        if (f.simNao("Deseja armazenar o valor?")){
             int a = f.pegarInt(0,5,
                     "Deseja Guardar em qual Slot?\n" +
-                            "[0] - SlotQ\n" +
-                            "[1] - SlotW\n" +
-                            "[2] - SlotE\n" +
-                            "[3] - SlotR\n" +
-                            "[4] - SlotT\n" +
-                            "[5] - SlotY\n"
+                            "[0] - SlotZ\n" +
+                            "[1] - SlotX\n" +
+                            "[2] - SlotC\n" +
+                            "[3] - SlotV\n" +
+                            "[4] - SlotB\n" +
+                            "[5] - SlotN\n"
             );
             armazenados[a] = result;
         }
     }
     float getArmazem(String conta){
-        String q = String.valueOf(armazenados[0]);
-        String w = String.valueOf(armazenados[1]);
-        String e = String.valueOf(armazenados[2]);
-        String r = String.valueOf(armazenados[3]);
-        String t = String.valueOf(armazenados[4]);
-        String y = String.valueOf(armazenados[5]);
-        String[] querty = {q, w, e, r, t, y};
-        String[] QUERTY = {"Q", "U", "E", "R", "T", "Y"};
+        String[] zxcvbn = {
+                String.valueOf(armazenados[0]), String.valueOf(armazenados[1]), String.valueOf(armazenados[2]),
+                String.valueOf(armazenados[3]), String.valueOf(armazenados[4]), String.valueOf(armazenados[5])};
+        String[] ZXCVBN = {"Z", "X", "C", "V", "B", "N"};
         conta = conta.toUpperCase();
-        for (int i = 0; i < QUERTY.length; i++) {
-            conta = conta.replace(QUERTY[i], querty[i]);
+        for (int i = 0; i < ZXCVBN.length; i++) {
+            conta = conta.replace(ZXCVBN[i], zxcvbn[i]);
         }
         return Float.parseFloat(conta);
     }
