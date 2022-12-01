@@ -27,7 +27,10 @@ public class Menu {
             }
             else
             {
-                break;
+                if (f.simNao("Deseja mesmo Sair?")) {
+                    break;
+                }
+                continue;
             }
 
             for (int i = 0; i <15; i++)
@@ -55,9 +58,7 @@ public class Menu {
                             "[2] - Subtrair\n" +
                             "[3] - Multiplicar\n" +
                             "[4] - Dividir\n" +
-                            "[5] - Calculadora Cientifica\n" +
-                            "[6] - Calculadora Financeira\n" +
-                            "[0] - Voltar ao Menu Principal"
+                            "[0] - Trocar calculadora"
             );
             float result = 0;
             if (escolha == 1)
@@ -80,14 +81,6 @@ public class Menu {
                 System.out.println("Digite 2 numeros para [dividir]");
                 result = c.dividir(veriStor(), veriStor());
             }
-            else if (escolha == 5)
-            {
-                return menuCientifica();
-            }
-            else if (escolha == 6)
-            {
-                return menuFinanceira();
-            }
             else
             {
                 break;
@@ -103,25 +96,82 @@ public class Menu {
     private char menuCientifica(){
         Cientifica cc = new Cientifica();
         while (true) {
-            int escolha = f.pegarInt(0, 4,
+            int escolha = f.pegarInt(0, 10,
                     "SEJA BEM VINDO A CALCULADORA CIENTIFICA\n" +
                             "O QUE DESEJA FAZER?\n" +
-                            "[1] - \n" +
-                            "[2] - \n" +
-                            "[3] - \n" +
-                            "[4] - \n" +
-                            "[X] - Calculadora Normal\n" +
-                            "[Y] - Calculadora Cientifica\n" +
-                            "[0] - Voltar ao Menu Principal"
+                            "[1] - Potenciacao\n" +
+                            "[2] - Raiz Quadrada\n" +
+                            "[3] - Raiz de X\n" +
+                            "[4] - Seno\n" +
+                            "[5] - Cosseno\n" +
+                            "[6] - Tangente\n" +
+                            "[7] - Secante\n" +
+                            "[8] - Cossecante\n" +
+                            "[9] - Cotangente\n" +
+                            "[10] - Log de base 10\n" +
+                            "[0] - Trocar calculadora"
             );
             float result = 0;
+            //float graus = 0;
             if (escolha == 1)
             {
-                //funcao
+                System.out.println("Digite os valores da base e expoente: ");
+               result = cc.potenciacao(
+                        veriStor("Digite a base: "),
+                        veriStor("digite o expoente: "));
             }
             else if (escolha == 2)
             {
-                //funcao
+                System.out.println("Digite 2 valores para calcular a [raiz quadrada]");
+                    result = cc.raiz(veriStor("Digite o radicando: "));
+            }else if (escolha == 3)
+            {
+                System.out.println("Digite 2 valores para calcular a [raiz de X]");
+                    result = cc.raiz(
+                            veriStor("Digite o radicando: "),
+                            veriStor("Digite o indice da raiz: "));
+            }
+            else if (escolha == 4)
+            {
+                System.out.println("Digite o grau para calcular o [seno]: ");
+                        result = cc.seno(
+                                veriStor("Insira o numero em graus: "));
+            }
+            else if (escolha == 5)
+            {
+                System.out.println("Digite o grau para calcular o [cosseno]: ");
+                result = cc.cosseno(
+                        veriStor("Insira o numero em graus: "));
+            }
+            else if (escolha == 6)
+            {
+                System.out.println("Digite o grau para calcular a [tangente]: ");
+                result = cc.tangente(
+                        veriStor("Insira o numero em graus: "));
+            }
+            else if (escolha == 7)
+            {
+                System.out.println("Digite o grau para calcular o [secante]: ");
+                result = cc.secante(
+                        veriStor("Insira o numero em graus: "));
+            }
+            else if (escolha == 8)
+            {
+                System.out.println("Digite o grau para calcular o [cosecante]: ");
+                result = cc.cosecante(
+                        veriStor("Insira o numero em graus: "));
+            }
+            else if (escolha == 9)
+            {
+                System.out.println("Digite o grau para calcular a [cotangente]: ");
+                result = cc.cotangente(
+                        veriStor("Insira o numero em graus: "));
+            }
+            else if (escolha == 10)
+            {
+                System.out.println("Digite o numero para calcular o [logaritmo base 10]: ");
+                result = cc.logaritmo(
+                        veriStor("Digite o numero: "));
             }
             else
             {
@@ -141,14 +191,12 @@ public class Menu {
         Financeira cf = new Financeira();
         while (true) {
             int escolha = f.pegarInt(0, 5,
-                    "SEJA BEM VINDO A CALCULADORA CIENTIFICA\n" +
+                    "SEJA BEM VINDO A CALCULADORA FINANCEIRA\n" +
                             "O QUE DESEJA FAZER?\n" +
                             "[1] - Calcular Juros Simples\n" +
                             "[2] - Calcular Juros Composto\n" +
                             "[3] - Calcular o (log, para encontrar o tempo)\n" +
-                            "[4] - Calculadora Normal\n" +
-                            "[5] - Calculadora Cientifica\n" +
-                            "[0] - Voltar ao Menu Principal"
+                            "[0] - Trocar calculadora"
             );
             float result = 0;
             float capitalInicial = 0;
@@ -180,15 +228,6 @@ public class Menu {
                         veriStor("Digite a Taxa de Juros: "),
                         veriStor("Digite o Montante: "));
             }
-            else if (escolha == 4)
-            {
-                return menuNormal();
-            }
-            else if (escolha == 5)
-            {
-                return menuCientifica();
-            }
-
             else
             {
                 break;
